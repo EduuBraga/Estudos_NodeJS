@@ -1,0 +1,14 @@
+{
+  "name": "aula006",
+  "version": "1.0.0",
+  "description": "editorImage",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eduardo Braga",
+  "license": "ISC",
+  "dependencies": {
+    "sharp": "^0.31.2"
+  }
+}
