@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olá</title>
+</head>
+<body>
+  <h1>Olá pessoas!</h1>
+
+  <script>
+    const getMethod = async method => {
+      const response = await fetch('http://localhost:3000/', {method: method})
+      const resText = await response.text()
+      console.log(resText)
+    }
+
+    getMethod('post') 
+    getMethod('put') 
+    getMethod('delete') 
+  </script>
+</body>
+</html>
