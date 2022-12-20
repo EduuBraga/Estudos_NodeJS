@@ -12,7 +12,7 @@ HTTP.createServer((req, res) => {
 
   FS.readFile(fileName, (error, data) => {
     if(error){
-      res.writeHead(404, {'Content-type': 'text/html'});
+      res.writeHead(404, {'Content-type': 'text/html;charset=utf-8'});
       res.end("<h1>Página não encontrada</h1>");
     }else{
       res.writeHead(200, {'Content-type': 'text/html'});
