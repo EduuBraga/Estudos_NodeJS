@@ -9,11 +9,17 @@
 </head>
 
 <body>
+  <%- include('./partials/nav.ejs', {title: 'Home'}) %>
+
   <% for(let user of users){%>
-    <% if(user.id % 2 === 0){ %>
-      <h4><%=user.name%></h4>
-      <p>email de <%=user.name%>: <%=user.email%></p>
-      <p>username de <%=user.name%>: <%=user.username%></p>
+    <% if(user.id % 2===0){ %>
+      <h4>
+        <%=user.name%>
+      </h4>
+      <p>email de <%=user.name%>: <%=user.email%>
+      </p>
+      <p>username de <%=user.name%>: <%=user.username%>
+      </p>
     <% } %>
   <%}%>
 </body>

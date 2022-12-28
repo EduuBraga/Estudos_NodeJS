@@ -30,4 +30,8 @@ server.get('/', (req, res) => {
   res.render('user', { users })
 })
 
+server.get('/about', (req, res) => {
+  res.render('about')
+})
+
 server.listen(PORT, () => console.log("Server running on PORT", 3000))
