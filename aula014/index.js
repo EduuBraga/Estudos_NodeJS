@@ -6,14 +6,17 @@ const PORT = 3000
 
 const users = [
   {
+    id: 0,
     name: 'Eduardo braga',
     username: 'EduuBraga',
     email: 'eduardo.braga467@gmail.com'
   }, {
+    id: 1,
     name: 'Yasmim binbin',
     username: 'YasmimBinBin',
     email: 'Yasmim.binbin@gmail.com'
   }, {
+    id: 2,
     name: 'Pablo vasconcelhos',
     username: 'Palo123',
     email: 'Pablo.vasconcelhos@gmail.com'
