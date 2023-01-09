@@ -1,12 +1,7 @@
 const routes = require('express').Router();
+const userController = require('../controllers/userController')
 
-routes.post('/register', (req, res) => {
-  res.send('register');
-});
-
-routes.post('/login', (req, res) => {
-  console.log('deu certo')
-  res.send('Login');
-});
+routes.post('/login', userController.login);
+routes.post('/register', userController.register);
 
 module.exports = routes;
