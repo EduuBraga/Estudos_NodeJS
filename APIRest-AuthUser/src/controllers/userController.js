@@ -1,4 +1,5 @@
 const userModel = require('../models/userModel')
+const { hashSync } = require('bcryptjs')
 
 const userController = {
   login: (req, res) => {
@@ -6,7 +7,11 @@ const userController = {
   },
   register: async (req, res) => {
     const { name, password, email } = req.body;
-    const newUser = new userModel({ name, password, email });
+
+    const existingEmail = await userModel.findOne({email});
+    if(existingEmail) return res.status(400).send('Email já existente');
+
+    const newUser = new userModel({ name, password: hashSync(password), email });
 
     try {
       const savedUser = await newUser.save();
