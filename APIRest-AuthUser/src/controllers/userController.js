@@ -1,9 +1,17 @@
 const userModel = require('../models/userModel')
-const { hashSync } = require('bcryptjs')
+const { hashSync, compareSync } = require('bcryptjs')
 
 const userController = {
-  login: (req, res) => {
-    res.send('login')
+  login: async(req, res) => {
+    const { password, email } = req.body;
+
+    const selectedUser = await userModel.findOne({email});
+    const passwordAndUserMatch = compareSync(password, selectedUser.password);
+    
+    if(!selectedUser || !passwordAndUserMatch) 
+      return res.status(400).send('Email ou password incorreto');
+
+    res.send('Usuário logado');
   },
   register: async (req, res) => {
     const { name, password, email } = req.body;
