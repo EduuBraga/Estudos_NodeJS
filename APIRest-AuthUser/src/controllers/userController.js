@@ -21,7 +21,7 @@ const userController = {
       process.env.SECRET_TOKEN_KEY
     );
 
-    res.header('authorization-token', token)
+    res.header('Authorization', token);
     res.send('Usuário logado');
   },
   register: async (req, res) => {
@@ -29,7 +29,7 @@ const userController = {
 
     const { error } = validateRegister(req.body)
     if (error) return res.status(400).send(error.message)
-    
+
     const existingEmail = await userModel.findOne({ email });
     if (existingEmail) return res.status(400).send('Email já existente');
 
