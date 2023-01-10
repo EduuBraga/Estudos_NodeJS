@@ -1,10 +1,14 @@
 const userModel = require('../models/userModel')
 const { hashSync, compareSync } = require('bcryptjs')
+const { validateLogin, validateRegister } = require('./validateDatas')
 const JWT = require('jsonwebtoken');
 
 const userController = {
   login: async (req, res) => {
     const { password, email } = req.body;
+
+    const { error } = validateLogin(req.body)
+    if (error) return res.status(400).send(error.message)
 
     const selectedUser = await userModel.findOne({ email });
     const passwordAndUserMatch = compareSync(password, selectedUser.password);
@@ -23,6 +27,9 @@ const userController = {
   register: async (req, res) => {
     const { name, password, email } = req.body;
 
+    const { error } = validateRegister(req.body)
+    if (error) return res.status(400).send(error.message)
+    
     const existingEmail = await userModel.findOne({ email });
     if (existingEmail) return res.status(400).send('Email já existente');
 
